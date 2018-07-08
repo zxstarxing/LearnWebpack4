@@ -346,7 +346,18 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _app = __webpack_require__(/*! ./app.scss */ \"./src/app.scss\");\n\nvar _app2 = _interopRequireDefault(_app);\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _root = __webpack_require__(/*! ./components/root */ \"./src/components/root.js\");\n\nvar _root2 = _interopRequireDefault(_root);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.render(_react2.default.createElement(_root2.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("\n\nvar _app = __webpack_require__(/*! ./app.scss */ \"./src/app.scss\");\n\nvar _app2 = _interopRequireDefault(_app);\n\nvar _app3 = __webpack_require__(/*! ./app.less */ \"./src/app.less\");\n\nvar _app4 = _interopRequireDefault(_app3);\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _root = __webpack_require__(/*! ./components/root */ \"./src/components/root.js\");\n\nvar _root2 = _interopRequireDefault(_root);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.render(_react2.default.createElement(_root2.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ }),
+
+/***/ "./src/app.less":
+/*!**********************!*\
+  !*** ./src/app.less ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/app.less?");
 
 /***/ }),
 
