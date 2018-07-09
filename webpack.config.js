@@ -10,10 +10,10 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[chunkhash].js'
+        filename: '[name].[hash].js'
     },
     devServer: {
-        open: true
+        open: true,
     },
     module: {
         rules: [
@@ -48,6 +48,33 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 }
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[hash].[ext]',
+                            outputPath: './images/'
+                        }
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                          bypassOnDebug: true,
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [ {
+                  loader: 'html-loader',
+                  options: {
+                    minimize: true,
+                  }
+                }],
             }
         ]
     },
@@ -67,10 +94,10 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: (getPath) => {
-                return getPath('./css/[name].[chunkhash].css').replace('css/js', 'css').replace('./js/','');
+                return getPath('./css/[name].[chunkhash].css').replace('css/js', 'css').replace('./js/', '');
             },
             allChunks: true
         }),
-        new CleanWebpackPlugin('dist')
+        new CleanWebpackPlugin('dist'),
     ]
 };
