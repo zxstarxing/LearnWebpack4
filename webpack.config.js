@@ -4,25 +4,34 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry:  {"app.bundle":'./src/app.js'} ,
+    entry: {
+        "./js/app.bundle": './src/app.js',
+        './js/contact': './src/contact.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkhash].js'
     },
     devServer: {
-        open:true
+        open: true
     },
     module: {
         rules: [
-            { test: /\.css$/, use: 'css-loader' },
-            { test: /\.ts$/, use: 'ts-loader' },
+            {
+                test: /\.css$/, use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        "css-loader",
+                    ]
+                })
+            },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
-                        "css-loader", 
-                        "sass-loader", 
+                        "css-loader",
+                        "sass-loader",
                     ]
                 }),
             },
@@ -30,11 +39,11 @@ module.exports = {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
                     use: ['css-loader', 'less-loader'],
-                    fallback: 'style-loader'
+                    fallback: 'style-loader',
                 })
             },
             {
-                test: /\.js$/,
+                test: [/\.js$/, /\.jsx$/],
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
@@ -46,9 +55,22 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'LearnWebpack4',
             template: './src/index.html',
-            hash: true
+            filename: 'index.html',
+            hash: true,
+            chunks: ["./js/app.bundle"]
         }),
-        new ExtractTextPlugin('style.css'),
+        new HtmlWebpackPlugin({
+            template: './src/contact.html',
+            filename: 'contact.html',
+            hash: true,
+            chunks: ["./js/contact"]
+        }),
+        new ExtractTextPlugin({
+            filename: (getPath) => {
+                return getPath('./css/[name].[chunkhash].css').replace('css/js', 'css').replace('./js/','');
+            },
+            allChunks: true
+        }),
         new CleanWebpackPlugin('dist')
     ]
 };

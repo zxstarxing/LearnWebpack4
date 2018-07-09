@@ -1,7 +1,7 @@
-.fontRed {
-  color: red;
-}
 body {
   background: pink; }
   body p {
     color: white; }
+.fontRed {
+  color: red;
+}
